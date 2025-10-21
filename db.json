@@ -1,0 +1,101 @@
+{
+  "character": [
+    {
+      "id": 827,
+      "name": "Alexey Navalny",
+      "status": "Alive",
+      "species": "Human",
+      "type": "",
+      "gender": "Male",
+      "origin": {
+        "name": "Earth (C-137)",
+        "url": "https://rickandmortyapi.com/api/location/1"
+      },
+      "location": {
+        "name": "Parallel Russia (C-2021)",
+        "url": "https://rickandmortyapi.com/api/location/127"
+      },
+      "image": "./pics/alex.jpg",
+      "episode": ["https://rickandmortyapi.com/api/episode/52"],
+      "url": "https://rickandmortyapi.com/api/character/827",
+      "created": "2017-11-04T18:48:46.250Z"
+    },
+    {
+      "id": 828,
+      "name": "Iuliia Navalnaya",
+      "status": "Alive",
+      "species": "Human",
+      "type": "",
+      "gender": "Female",
+      "origin": {
+        "name": "Earth (C-137)",
+        "url": "https://rickandmortyapi.com/api/location/1"
+      },
+      "location": {
+        "name": "Parallel Russia (C-2021)",
+        "url": "https://rickandmortyapi.com/api/location/127"
+      },
+      "image": "./pics/yulia.jpg",
+      "episode": ["https://rickandmortyapi.com/api/episode/52"],
+      "url": "https://rickandmortyapi.com/api/character/828",
+      "created": "2017-11-04T18:48:46.250Z"
+    },
+    {
+      "id": 829,
+      "name": "Moscow Rick",
+      "status": "Alive",
+      "species": "Human",
+      "type": "",
+      "gender": "Male",
+      "origin": {
+        "name": "Earth (C-137)",
+        "url": "https://rickandmortyapi.com/api/location/1"
+      },
+      "location": {
+        "name": "Parallel Russia (C-2021)",
+        "url": "https://rickandmortyapi.com/api/location/127"
+      },
+      "image": "./pics/rick.jpg",
+      "episode": ["https://rickandmortyapi.com/api/episode/52"],
+      "url": "https://rickandmortyapi.com/api/character/829",
+      "created": "2017-11-04T18:48:46.250Z"
+    },
+    {
+      "id": 830,
+      "name": "Katya",
+      "status": "Alive",
+      "species": "Human",
+      "type": "",
+      "gender": "Female",
+      "origin": {
+        "name": "Earth (C-137)",
+        "url": "https://rickandmortyapi.com/api/location/1"
+      },
+      "location": {
+        "name": "Parallel Russia (C-2021)",
+        "url": "https://rickandmortyapi.com/api/location/127"
+      },
+      "image": "./pics/katya.jpg",
+      "episode": ["https://rickandmortyapi.com/api/episode/52"],
+      "url": "https://rickandmortyapi.com/api/character/830",
+      "created": "2017-11-04T18:48:46.250Z"
+    }
+  ],
+  "location": [
+    {
+      "id": 127,
+      "name": "Parallel Russia (C-2021)",
+      "type": "Dream",
+      "dimension": "Dimension C-2021",
+      "residents": [
+        "https://rickandmortyapi.com/api/character/827",
+        "https://rickandmortyapi.com/api/character/828",
+        "https://rickandmortyapi.com/api/character/829",
+        "https://rickandmortyapi.com/api/character/830"
+      ],
+      "url": "https://rickandmortyapi.com/api/location/127",
+      "created": "2017-11-10T12:42:04.162Z"
+    }
+  ],
+  "episode": ["https://rickandmortyapi.com/api/episode/52"]
+}

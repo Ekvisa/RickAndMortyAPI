@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  background: linen;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: center;
+  padding: 1em;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+  margin: 1em auto 3em;
+}
+header h1 {
+  color: darkcyan;
+}
+header .buttons {
+  display: flex;
+  gap: 2em;
+}
+header .buttons button {
+  background-color: lightcyan;
+  border-radius: 1em;
+  border: 1px solid aqua;
+  padding: 1em;
+  width: 100px;
+  cursor: pointer;
+}
+header .buttons button:hover {
+  box-shadow: 0 0 10px white;
+  color: darkcyan;
+}
+
+.card {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid tan;
+  border-radius: 1em;
+  background: bisque;
+}
+
+/*# sourceMappingURL=style.css.map */
