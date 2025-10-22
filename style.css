@@ -1,6 +1,15 @@
 body {
   margin: 0;
-  background: linen;
+  background: black;
+  font-family: verdana;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  opacity: 0.7;
+  z-index: -1;
 }
 
 main {
@@ -14,12 +23,14 @@ main {
 header {
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 2em;
   align-items: center;
   margin: 1em auto 3em;
 }
 header h1 {
-  color: darkcyan;
+  color: darkturquoise;
+  -webkit-text-stroke: 1px yellow;
+  font-size: 3em;
 }
 header .buttons {
   display: flex;
@@ -28,24 +39,83 @@ header .buttons {
 header .buttons button {
   background-color: lightcyan;
   border-radius: 1em;
-  border: 1px solid aqua;
+  border: none;
   padding: 1em;
   width: 100px;
+  color: darkcyan;
+}
+header .buttons button.active {
   cursor: pointer;
 }
-header .buttons button:hover {
+header .buttons button.active:hover {
   box-shadow: 0 0 10px white;
-  color: darkcyan;
+  color: darkturquoise;
+}
+header .pages {
+  color: yellow;
 }
 
 .card {
-  display: flex;
-  gap: 1em;
-  align-items: center;
-  flex-direction: column;
-  border: 1px solid tan;
   border-radius: 1em;
-  background: bisque;
+  background: white;
+  padding: 1em 1em 1em;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-between;
+  gap: 1em;
+  cursor: pointer;
+}
+.card:hover {
+  filter: sepia(0.3);
+}
+.card p {
+  max-width: 200px;
+  margin: 0;
+  line-height: 1.5em;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.card img {
+  border-radius: 1em;
+  display: block;
+  width: 200px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 2em;
+  border-radius: 2em;
+  text-align: center;
+}
+
+.modal img {
+  width: 300px;
+  border-radius: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 2em;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */

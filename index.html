@@ -5,16 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./pics/favicon.png" type="image/x-icon" />
   </head>
   <body>
     <header>
       <h1>Rick and Morty Characters</h1>
+      <p id="quote"></p>
+      <input
+        id="search"
+        type="text"
+        placeholder="Search by name..."
+        class="search"
+        autocomplete="off"
+      />
       <div class="buttons">
         <button type="button" id="prev">Previous</button>
         <button type="button" id="next">Next</button>
-        <button type="button" id="filter">filter</button>
       </div>
-      <div><span id="currentPage"></span> of <span id="totalPages"></span></div>
+      <div class="pages">
+        page <span id="currentPage"></span> of <span id="totalPages"></span>
+      </div>
     </header>
     <main></main>
     <footer></footer>
