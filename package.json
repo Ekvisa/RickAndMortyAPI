@@ -8,9 +8,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "json-server": "^1.0.0-beta.3"
-  },
   "dependencies": {
     "chalk": "^5.6.2",
     "chokidar": "^4.0.3",
@@ -24,6 +21,7 @@
     "inflection": "^3.0.2",
     "ipaddr.js": "^2.2.0",
     "json5": "^2.2.3",
+    "json-server": "^1.0.0-beta.3",
     "lowdb": "^7.0.1",
     "milliparsec": "^4.0.0",
     "mime": "^4.0.4",
