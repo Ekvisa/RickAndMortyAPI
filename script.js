@@ -1,5 +1,5 @@
 const PATH = "https://rickandmortyapi.com/api";
-const MY_PATH = "http://localhost:3002";
+const MY_PATH = "https://rickandmortyapi-xkwe.onrender.com";
 let allCharacters = []; // все персонажи
 let fullArrayToShow = []; // персонажи, с которыми работаем (напр., фильтрованные)
 let loading = true;

@@ -11,6 +11,49 @@ body {
   opacity: 0.7;
   z-index: -1;
 }
+
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+  align-items: center;
+  margin: 1em 10%;
+  .title {
+    text-align: center;
+    h1 {
+      color: darkturquoise;
+      -webkit-text-stroke: 1px yellow;
+      font-size: 3em;
+    }
+    p {
+      color: darkcyan;
+      font-style: italic;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    gap: 2em;
+    button {
+      background-color: lightgreen;
+      border-radius: 1em;
+      border: none;
+      padding: 1em;
+      width: 100px;
+      &.active {
+        cursor: pointer;
+        &:hover {
+          box-shadow: 0 0 10px white;
+          color: darkcyan;
+        }
+      }
+    }
+  }
+  .pages {
+    color: gray;
+  }
+}
+
 main {
   display: flex;
   flex-wrap: wrap;
@@ -50,48 +93,6 @@ main {
       display: block;
       width: 200px;
     }
-  }
-}
-
-header {
-  display: flex;
-  flex-direction: column;
-  gap: 3em;
-  align-items: center;
-  margin: 1em 10em;
-  .title {
-    text-align: center;
-    h1 {
-      color: darkturquoise;
-      -webkit-text-stroke: 1px yellow;
-      font-size: 3em;
-    }
-    p {
-      color: darkcyan;
-      font-style: italic;
-    }
-  }
-
-  .buttons {
-    display: flex;
-    gap: 2em;
-    button {
-      background-color: lightgreen;
-      border-radius: 1em;
-      border: none;
-      padding: 1em;
-      width: 100px;
-      &.active {
-        cursor: pointer;
-        &:hover {
-          box-shadow: 0 0 10px white;
-          color: darkcyan;
-        }
-      }
-    }
-  }
-  .pages {
-    color: gray;
   }
 }
 
