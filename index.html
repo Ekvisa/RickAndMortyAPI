@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="shortcut icon" href="./pics/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="./pics/portal.png" type="image/x-icon" />
   </head>
   <body>
     <header>
-      <h1>Rick and Morty Characters</h1>
-      <p id="quote"></p>
+      <div class="title">
+        <h1>Rick and Morty Characters</h1>
+        <p id="quote"></p>
+      </div>
       <input
         id="search"
         type="text"
@@ -26,8 +28,11 @@
         page <span id="currentPage"></span> of <span id="totalPages"></span>
       </div>
     </header>
-    <main></main>
+    <main>
+      <div id="loading">Loading...</div>
+    </main>
     <footer></footer>
+
     <script src="script.js"></script>
   </body>
 </html>

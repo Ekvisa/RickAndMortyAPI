@@ -12,24 +12,24 @@ const main = document.querySelector("main");
 const prevBtn = document.querySelector("#prev");
 const nextBtn = document.querySelector("#next");
 const searchInput = document.querySelector("#search");
+const loadingEl = document.querySelector("#loading");
 
-// Добрая цитата
-// const quotes = [
-//   "В каждой вселенной найдётся кто-то, кто не сдаётся.",
-//   "Мир может быть безумен, но это не повод переставать думать.",
-//   "Иногда самый разумный — тот, кого объявили сумасшедшим.",
-//   "Когда логика рушится, остаётся только совесть.",
-//   "Пока есть хотя бы один, кто помнит, что такое добро, — вселенная не потеряна.",
-// ];
-fetch("quotes.json")
-  .then((response) => response.json())
-  .then((quotes) => {
-    console.log(quotes);
-    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-    document.querySelector("#quote").textContent = randomQuote;
+function setLoading(state) {
+  loading = state;
+  loadingEl.style.display = state ? "block" : "none";
+}
+
+// Случайное высказывание:
+setLoading(true);
+fetch(`${MY_PATH}/quote`)
+  .then((r) => r.json())
+  .then((data) => {
+    const randomQuote = data[Math.floor(Math.random() * data.length)];
+    document.querySelector("#quote").textContent = randomQuote.text;
   });
+setLoading(false);
 
-// Загружаем всех персонажей из Rick&MortyAPI:
+// Загрузка всех персонажей из Rick&MortyAPI:
 async function fetchOfficialCharacters() {
   let officialCharacters = [];
   let url = `${PATH}/character/`;
@@ -42,33 +42,25 @@ async function fetchOfficialCharacters() {
   return officialCharacters;
 }
 
-// Объединяем персонажей из Rick&MortyAPI с кастомными:
+// Объединение персонажей из Rick&MortyAPI с кастомными:
 async function joinCharacters() {
+  setLoading(true);
   const [mainData, myData] = await Promise.all([
     fetchOfficialCharacters(),
     fetch(`${MY_PATH}/character`).then((r) => r.json()),
   ]);
+  setLoading(false);
   const joined = [mainData[0], ...myData, ...mainData.slice(1)];
-
-  //   allCharactersOriginal = joined;
-  //   allCharactersCopy = [...joined];
-  //   return allCharactersCopy;
   return joined;
 }
 
-// Получим из массива персонажей тех, которые попадут на заданную страницу:
+// Получение персонажей, которые попадут на заданную страницу:
 function getPage(array, page) {
   const start = (page - 1) * PER_PAGE;
   return array.slice(start, start + PER_PAGE);
 }
 
-// Переход по страницам - delete it?
-// function changePage(page) {
-//   //   currentPage = page;
-//   showPage(getPage(filteredCharacters, page));
-// }
-
-// Отобразим персонажей из заданной страницы данных на странице сайта:
+// Отображение персонажей из заданной страницы данных на странице сайта:
 function showPage(characters, pageNumber) {
   const charactersToShow = getPage(characters, pageNumber);
 
@@ -117,8 +109,8 @@ function filterCharacters() {
 }
 
 joinCharacters().then((characters) => {
-  allCharacters = characters; // сохраняем оригинал
-  fullArrayToShow = [...characters]; // копия для отображения
+  allCharacters = characters;
+  fullArrayToShow = [...characters];
   showPage(fullArrayToShow, currentPage);
 });
 
@@ -147,12 +139,11 @@ function clearPage() {
 function showDetails(character) {
   const modal = document.createElement("div");
   modal.className = "modal";
-
   modal.innerHTML = `
-    <div class="modal-content">
-      <span class="close">&times;</span>
+    <div class="modalcontent">
+<img src="./pics/circle-xmark.svg" class="close" alt="close"/>
       <h2>${character.name}</h2>
-      <img src="${character.image}" alt="${character.name}">
+      <img src="${character.image}" class="photo" alt="${character.name}">
       <p><b>Status:</b> ${character.status}</p>
       <p><b>Species:</b> ${character.species}</p>
       <p><b>Gender:</b> ${character.gender}</p>
@@ -186,6 +177,7 @@ function drawStars(starsCount, from, to) {
   }
 }
 
+// Сброс фильтра:
 document.addEventListener("click", (event) => {
   if (
     event.target !== searchInput &&
