@@ -15,7 +15,7 @@
         "name": "Parallel Russia (S-90)",
         "url": "https://rickandmortyapi.com/api/location/127"
       },
-      "image": "./pics/alex.jpg",
+      "image": "https://raw.githubusercontent.com/Ekvisa/RickAndMortyAPI/main/pics/alex.jpg",
       "episode": ["https://youtu.be/5K0njIual6Q?si=xF0MDW6ECFP3s4DS"],
       "url": "https://rickandmortyapi.com/api/character/827",
       "created": "2017-11-04T18:48:46.250Z"
@@ -35,7 +35,7 @@
         "name": "Parallel Russia (S-90)",
         "url": "https://rickandmortyapi.com/api/location/127"
       },
-      "image": "./pics/yulia.jpg",
+      "image": "https://raw.githubusercontent.com/Ekvisa/RickAndMortyAPI/main/pics/yulia.jpg",
       "episode": ["https://youtu.be/5K0njIual6Q?si=xF0MDW6ECFP3s4DS"],
       "url": "https://rickandmortyapi.com/api/character/828",
       "created": "2017-11-04T18:48:46.250Z"
@@ -55,7 +55,7 @@
         "name": "Parallel Russia (S-90)",
         "url": "https://rickandmortyapi.com/api/location/127"
       },
-      "image": "./pics/rick.jpg",
+      "image": "https://raw.githubusercontent.com/Ekvisa/RickAndMortyAPI/main/pics/rick.jpg",
       "episode": ["https://youtu.be/5K0njIual6Q?si=xF0MDW6ECFP3s4DS"],
       "url": "https://rickandmortyapi.com/api/character/829",
       "created": "2017-11-04T18:48:46.250Z"
@@ -75,7 +75,7 @@
         "name": "Parallel Russia (S-90)",
         "url": "https://rickandmortyapi.com/api/location/127"
       },
-      "image": "./pics/katya.jpg",
+      "image": "https://raw.githubusercontent.com/Ekvisa/RickAndMortyAPI/main/pics/katya.jpg",
       "episode": ["https://youtu.be/5K0njIual6Q?si=xF0MDW6ECFP3s4DS"],
       "url": "https://rickandmortyapi.com/api/character/830",
       "created": "2017-11-04T18:48:46.250Z"
