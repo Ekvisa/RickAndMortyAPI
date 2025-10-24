@@ -9,14 +9,17 @@ const PER_PAGE = 20;
 const currentP = document.querySelector("#currentPage");
 const totalP = document.querySelector("#totalPages");
 const main = document.querySelector("main");
-const prevBtn = document.querySelector("#prev");
-const nextBtn = document.querySelector("#next");
+const prevBtns = document.querySelectorAll(".prev");
+const nextBtns = document.querySelectorAll(".next");
 const searchInput = document.querySelector("#search");
 const loadingEl = document.querySelector("#loading");
+const pagination = document.querySelector(".pages");
 
 function setLoading(state) {
   loading = state;
   loadingEl.style.display = state ? "block" : "none";
+  pagination.style.display = state ? "none" : "block";
+  document.querySelector("footer").style.display = state ? "none" : "block";
 }
 
 // Случайное высказывание:
@@ -28,6 +31,26 @@ fetch(`${MY_PATH}/quote`)
     document.querySelector("#quote").textContent = randomQuote.text;
   });
 setLoading(false);
+
+// Случайное сообщение о загрузке:
+const loadingMessages = [
+  "Портал открыт, данные уже вылетают из своих галактик...",
+  "Морти, держись! Мы загружаем!",
+  "Межпространственная передача началась!",
+  "Пакеты данных проходят сквозь кротовую нору...",
+  "Летим через галактику за вашими данными...",
+  "Рик что-то нажал, и теперь загрузка занимает вечность!",
+  "Гравитационные волны мешают сигналу... Рик уже всё чинит, а пока подождите!",
+  "Подождите! Морти, я почти загрузил это! Почти!",
+  "Вселенная слегка тормозит. Подождите...",
+  "Собираем биты информации... осторожно, возможен небольшой хлопок.",
+  "Загрузка межгалактических данных... не паникуйте, всего пара световых лет!",
+  "Загрузка данных может занять 42 секунды или вечность. Или не занять.",
+  "Почти готово! Вселенский интернет не самый быстрый...",
+];
+const randomMessage =
+  loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
+loadingEl.textContent = randomMessage;
 
 // Загрузка всех персонажей из Rick&MortyAPI:
 async function fetchOfficialCharacters() {
@@ -72,12 +95,12 @@ function showPage(characters, pageNumber) {
   currentP.textContent = pageNumber;
 
   if (currentPage === 1) {
-    prevBtn.disabled = true;
-    prevBtn.classList.remove("active");
+    prevBtns.forEach((b) => (b.disabled = true));
+    prevBtns.forEach((b) => b.classList.remove("active"));
   }
   if (currentPage === pagesCount) {
-    nextBtn.disabled = true;
-    nextBtn.classList.remove("active");
+    nextBtns.forEach((b) => (b.disabled = true));
+    nextBtns.forEach((b) => b.classList.remove("active"));
   }
 
   charactersToShow.forEach((el) => {
@@ -114,25 +137,36 @@ joinCharacters().then((characters) => {
   showPage(fullArrayToShow, currentPage);
 });
 
-nextBtn.addEventListener("click", () => {
-  if (currentPage < Math.ceil(fullArrayToShow.length / PER_PAGE)) {
-    currentPage++;
-    showPage(fullArrayToShow, currentPage);
-  }
-});
+nextBtns.forEach((b) =>
+  b.addEventListener("click", () => {
+    if (currentPage < Math.ceil(fullArrayToShow.length / PER_PAGE)) {
+      currentPage++;
+      showPage(fullArrayToShow, currentPage);
+    }
+  })
+);
 
-prevBtn.addEventListener("click", () => {
-  if (currentPage > 1) {
-    currentPage--;
-    showPage(fullArrayToShow, currentPage);
-  }
+prevBtns.forEach((b) =>
+  b.addEventListener("click", () => {
+    if (currentPage > 1) {
+      currentPage--;
+      showPage(fullArrayToShow, currentPage);
+    }
+  })
+);
+
+// Прокрутим наверх, если перелистнули нижней кнопкой:
+document.querySelectorAll("footer button").forEach((b) => {
+  b.addEventListener("click", () => {
+    main.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
 });
 
 function clearPage() {
-  nextBtn.disabled = false;
-  nextBtn.classList.add("active");
-  prevBtn.disabled = false;
-  prevBtn.classList.add("active");
+  nextBtns.forEach((b) => (b.disabled = false));
+  nextBtns.forEach((b) => b.classList.add("active"));
+  prevBtns.forEach((b) => (b.disabled = false));
+  prevBtns.forEach((b) => b.classList.add("active"));
   main.innerHTML = "";
 }
 
@@ -171,7 +205,7 @@ function drawStars(starsCount, from, to) {
     star.className = "star";
     const starSize = Math.random() * 10 + 1;
     star.style.width = star.style.height = `${starSize}px`;
-    star.style.left = `${Math.random() * 100}%`;
+    star.style.left = `calc(${Math.random() * 100}% - 10px)`; // сместим влево на максимальный диаметр звезды, чтобы не было прокрутки снизу
     star.style.top = `${Math.random() * to + from}%`;
     document.body.appendChild(star);
   }
@@ -181,8 +215,8 @@ function drawStars(starsCount, from, to) {
 document.addEventListener("click", (event) => {
   if (
     event.target !== searchInput &&
-    event.target !== nextBtn &&
-    event.target !== prevBtn &&
+    !event.target.closest(".next") &&
+    !event.target.closest(".prev") &&
     searchInput.value
   ) {
     searchInput.value = "";

@@ -51,6 +51,7 @@ header .buttons button.active:hover {
 }
 header .pages {
   color: gray;
+  display: none;
 }
 
 main {
@@ -128,6 +129,24 @@ main .card img {
 }
 .close:hover {
   filter: contrast(0.5);
+}
+
+footer {
+  display: none;
+  text-align: center;
+  margin: 1em 0;
+}
+footer button {
+  background: transparent;
+  color: gray;
+  font-weight: bold;
+  border: none;
+  margin: 1em;
+  font-size: 1.5em;
+}
+footer button.active {
+  color: white;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */

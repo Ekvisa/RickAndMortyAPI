@@ -11,7 +11,7 @@
     <header>
       <div class="title">
         <h1>Rick and Morty Characters</h1>
-        <p id="quote"></p>
+        <p id="quote">Wubba Lubba Dub Dub!</p>
       </div>
       <input
         id="search"
@@ -21,18 +21,20 @@
         autocomplete="off"
       />
       <div class="buttons">
-        <button type="button" id="prev">Previous</button>
-        <button type="button" id="next">Next</button>
+        <button type="button" class="prev">Previous</button>
+        <button type="button" class="next">Next</button>
       </div>
       <div class="pages">
         page <span id="currentPage"></span> of <span id="totalPages"></span>
       </div>
     </header>
     <main>
-      <div id="loading">Loading...</div>
+      <p id="loading">Подождите, идёт синхронизация с измерением C-137...</p>
     </main>
-    <footer></footer>
-
+    <footer>
+      <button type="button" class="prev">&lt</button>
+      <button type="button" class="next">&gt</button>
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>
