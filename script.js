@@ -1,7 +1,7 @@
 const PATH = "https://rickandmortyapi.com/api";
 const MY_PATH = "https://rickandmortyapi-xkwe.onrender.com";
 let allCharacters = []; // все персонажи
-let fullArrayToShow = []; // персонажи, с которыми работаем (напр., фильтрованные)
+let fullArrayToShow = []; // персонажи, с которыми работаем (фильтрованные)
 let loading = true;
 let currentPage = 1;
 let pagesCount = 1;
@@ -23,14 +23,16 @@ function setLoading(state) {
 }
 
 // Случайное высказывание:
-setLoading(true);
-fetch(`${MY_PATH}/quote`)
-  .then((r) => r.json())
-  .then((data) => {
-    const randomQuote = data[Math.floor(Math.random() * data.length)];
-    document.querySelector("#quote").textContent = randomQuote.text;
-  });
-setLoading(false);
+function showQuote() {
+  setLoading(true);
+  fetch(`${MY_PATH}/quote`)
+    .then((r) => r.json())
+    .then((data) => {
+      const randomQuote = data[Math.floor(Math.random() * data.length)];
+      document.querySelector("#quote").textContent = randomQuote.text;
+    });
+  setLoading(false);
+}
 
 // Случайное сообщение о загрузке:
 const loadingMessages = [
@@ -85,6 +87,13 @@ function getPage(array, page) {
 
 // Отображение персонажей из заданной страницы данных на странице сайта:
 function showPage(characters, pageNumber) {
+  // Обновим цитату и сгенерим новый фон:
+  showQuote();
+  let stars = document.querySelectorAll(".star");
+  stars.forEach((s) => s.remove());
+  drawStars(40, 0, 50);
+  drawStars(20, 50, 100);
+
   const charactersToShow = getPage(characters, pageNumber);
 
   pagesCount = Math.ceil(characters.length / PER_PAGE);
@@ -211,10 +220,12 @@ function drawStars(starsCount, from, to) {
   }
 }
 
-// Сброс фильтра:
+// Сброс фильтра, если нажали вне инпута (но если это кнопка или карточка, не сбрасываем):
 document.addEventListener("click", (event) => {
   if (
     event.target !== searchInput &&
+    !event.target.closest(".modal") &&
+    !event.target.closest(".card") &&
     !event.target.closest(".next") &&
     !event.target.closest(".prev") &&
     searchInput.value
